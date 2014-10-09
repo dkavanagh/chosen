@@ -30,6 +30,7 @@ class AbstractChosen
     @display_selected_options = if @options.display_selected_options? then @options.display_selected_options else true
     @display_disabled_options = if @options.display_disabled_options? then @options.display_disabled_options else true
     @create_option = @options.create_option || false
+    @create_with_enter = @options.create_with_enter || false
     @persistent_create_option = @options.persistent_create_option || false
     @skip_no_results = @options.skip_no_results || false
 
@@ -231,6 +232,10 @@ class AbstractChosen
           this.results_search()
       when 13
         evt.preventDefault()
+        searchText = this.get_search_text()
+        if @create_option and @create_with_enter and @results_showing and searchTe
+            @select_create_option(searchText)
+            return this.results_hide()
         this.result_select(evt) if this.results_showing
       when 27
         this.results_hide() if @results_showing
