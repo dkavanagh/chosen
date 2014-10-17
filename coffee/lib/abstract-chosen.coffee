@@ -233,7 +233,7 @@ class AbstractChosen
       when 13
         evt.preventDefault()
         searchText = this.get_search_text()
-        if @create_option and @create_with_enter and @results_showing and searchTe
+        if @create_option and @create_with_enter and @results_showing and searchText.length
             @select_create_option(searchText)
             return this.results_hide()
         this.result_select(evt) if this.results_showing
